@@ -1,0 +1,19 @@
+{
+  "name": "DemoTorinoMiniMakerFaire",
+  "version": "0.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gist.github.com/10f228316027170d9385.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "johnny-five": "^0.7.36",
+    "pouchdb": "^2.2.2"
+  }
+}
