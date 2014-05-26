@@ -1,5 +1,7 @@
 module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-connect");
+  grunt.loadNpmTasks("grunt-concurrent");
+  grunt.loadNpmTasks("grunt-nodemon");
 
   grunt.initConfig({
     connect: {
@@ -16,6 +18,21 @@ module.exports = function(grunt) {
           }
         }
       }
+    },
+    nodemon: {
+      server: {
+        script: 'server.js'
+      }
+    },
+    concurrent: {
+      server: {
+        tasks: ['nodemon', 'connect'],
+        options: {
+          logConcurrentOutput: true
+        }
+      }
     }
   });
+
+  grunt.registerTask('default', ['concurrent:server'])
 }
