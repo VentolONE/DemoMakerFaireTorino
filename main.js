@@ -54,7 +54,9 @@
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   var size = 150,
-    db = new PouchDB("http://localhost:5984/makerfaire"),
+    db = new VouchDB('http://jsbin.com/dukom/1.json', {
+      loc: 1
+    }),
     $xAxis = svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")"),
@@ -68,32 +70,38 @@
       .attr("class", "mediumLine"),
     since,
     transform = function(data) {
+      console.log('transform')
       return data.results.map(function(d) {
         return d.doc
       })
-    }
-
-
-  $yAxis.append("text")
-    .attr("transform", "rotate(-90)")
-    .attr("y", 6)
-    .attr("dy", ".71em")
-    .style("text-anchor", "end")
-    .text("Value")
-
-  function changes(_since) {
-    return db.changes({
-      include_docs: true,
-      since: _since,
-      limit: size
-    }).then(function(res) {
+    },
+    setSince = function(res) {
       since = res.last_seq
       return res
-    })
-  }
+    },
+
+    $yAxis.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Value")
+
+    function changes(_since) {
+      console.log('changes')
+      return db.changes({
+        include_docs: true,
+        since: _since,
+        limit: size
+      }).then(function(res) {
+        since = res.last_seq
+        return res
+      })
+    }
 
   db.info()
     .then(function(info) {
+      console.log('info')
       return info.update_seq
     }).then(changes)
     .then(transform)
