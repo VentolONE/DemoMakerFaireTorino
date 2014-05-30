@@ -110,7 +110,7 @@ function DemoChart(options) {
         }
       }
 
-      loadData()
+      setTimeout(loadData, options.delay || 0)
       setInterval(loadData, options.interval)
 
       setInterval(function() {

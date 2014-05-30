@@ -16,7 +16,8 @@ DemoChart({
   width: 480,
   height: 250,
   size: 60,
-  interval: 5000
+  interval: 5000,
+  delay: 1000
 })
 
 DemoChart({
@@ -30,7 +31,8 @@ DemoChart({
   width: 480,
   height: 250,
   size: 60,
-  interval: 5000
+  interval: 5000,
+  delay: 2000
 })
 
 DemoChart({
@@ -44,7 +46,8 @@ DemoChart({
   width: 480,
   height: 250,
   size: 60,
-  interval: 5000
+  interval: 5000,
+  delay: 3000
 })
 
 DemoChart({
@@ -58,5 +61,6 @@ DemoChart({
   width: 480,
   height: 250,
   size: 60,
-  interval: 5000
+  interval: 5000,
+  delay: 4000
 })
